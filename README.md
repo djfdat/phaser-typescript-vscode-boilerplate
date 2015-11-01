@@ -14,7 +14,7 @@ npm install -g typescript
 5. Open this folder using VS Code.
 6. Press *Ctrl+Shift+B* to compile the typescript files in [src/](src/) to [bin/js/](bin/js/).
 7. Press *F5* to start the webserver.
-8. Open [localhost:5858] in your favorite web browser. To modify this port, make sure to update the port number in [.vcode/launch.json](.vcode/launch.json) and [server/server.js](server/server.js).
+8. Open [localhost:5858] in your favorite web browser. To modify this port, make sure to update the port number in [.vscode/launch.json](.vscode/launch.json) and [server/server.js](server/server.js).
 
 ## Project Structure Overview
 
