@@ -12,7 +12,7 @@ var PhaserGame = (function () {
         // add our logo image to the assets class under the
         // key 'logo'. We're also setting the background colour
         // so it's the same as the background colour in the image
-        this.game.load.image('logo', "assets/ds_logo.png");
+        this.game.load.image('logo', "assets/logo.png");
         this.game.stage.backgroundColor = 0xB20059;
     };
     PhaserGame.prototype.create = function () {
