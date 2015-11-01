@@ -30,7 +30,7 @@ Directory of all assets that the game/site/webpage will use. Feel free to make m
 #### [/bin/js](/bin/js)
 Directory of compiled javascript as well as phaser. Any additional javascript libraries can be placed here as well.
 
-### [/node-modules](/node-modules)
+### [/node_modules](/node_modules)
 Contains Node specific setup and packages. 
 
 ### [/server](/server)
