@@ -17,28 +17,28 @@ npm install -g typescript
 
 ## Project Structure Overview
 
-### /.vscode
+### [/.vscode](/.vscode)
 Contains VS Code project setup to handle compiling typescript code and running the webserver. Only needed if you are using VS Code for these purposes.
 
-### /bin
+### [/bin] (/bin)
 Directory of all output files that could be directly uploaded. 
 
-#### /bin/assets
+#### [/bin/assets] (/bin/assets)
 Directory of all assets that the game/site/webpage will use. Feel free to make more directories for better organization.
 
-#### /bin/js
+#### [/bin/js] (/bin/js)
 Directory of compiled javascript as well as phaser. Any additional javascript libraries can be placed here as well.
 
-### /node-modules
+### [/node-modules] (/node-modules)
 Contains Node specific setup and packages. 
 
-### /server
+### [/server] (/server)
 Contains server setup for node-static
 
-### /src
+### [/src] (/src)
 Contains all your source typescript files. These will be compiled into /bin/js. Feel free to make more directories for better organization.
 
-### /tsd
+### [/tsd] (/tsd)
 Contains typescript definition files.
 
 ## Updating Dependencies
@@ -51,6 +51,7 @@ npm update node-static
 If something is out of date, please make an Issue or a Pull Request and I'll update it.
 
 [Node]: 			https://nodejs.org
+[Typescript]:		https://www.npmjs.com/package/typescript
 [VS Code]: 			https://code.visualstudio.com
 [Download]: 		https://code.visualstudio.com/
 [localhost:5858]:	localhost:5858
