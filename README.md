@@ -30,25 +30,25 @@ Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-stu
 Contains [VS Code] project setup to handle compiling typescript code and running the webserver. Only needed if you are using VS Code for these purposes.
 
 ### [/bin](/bin)
-Directory of all output files that could be directly uploaded. 
+Directory of all output files that can be directly uploaded to host your game files. 
 
 #### [/bin/assets](/bin/assets)
 Directory of all assets that the game/site/webpage will use. Feel free to make more directories for better organization.
 
 #### [/bin/js](/bin/js)
-Directory of compiled javascript as well as phaser. Any additional javascript libraries can be placed here as well.
+Directory of compiled javascript as well as Phaser. Any additional javascript libraries can be placed here as well. Current Phaser version included is v2.4.4 "Amador".
 
 ### [/node_modules](/node_modules)
-Contains [Node] specific setup and packages. 
+Contains [Node] specific setup and packages. Currently the only package used is [node-static] to allow VS Code to run a server.
 
 ### [/server](/server)
 Contains server setup for the packaged [node-static] web server.
 
 ### [/src](/src)
-Contains all your source [Typescript] files. These will be compiled into /bin/js. Feel free to make more directories for better organization.
+Contains all your source [Typescript] files. These will be compiled into /bin/js. Feel free to make more directories for better organization. This is where you will mainly be working.
 
 ### [/tsd](/tsd)
-Contains [Typescript] definition files.
+Contains [Typescript] definition files. This is what the typescript compiler uses to add types to objects/functions.
 
 ## Updating Dependencies
 This setup uses the node.js package [node-static] to handle the hosting of files. While we will attempt to keep this up to date, if your project needs to update this package, run the following command in the command line if the project folder:
