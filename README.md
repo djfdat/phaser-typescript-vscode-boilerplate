@@ -6,9 +6,11 @@ Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-stu
 ## Getting Started
 1. Install [Node].
 2. Use NPM (comes with [Node]) to install [Typescript] from the command line.
-```
-npm install -g typescript
-```
+
+  ```
+  npm install -g typescript
+  ```
+
 3. Install [VS Code].
 4. [Download] and extract this repository to desired destination.
 5. Open this folder using [VS Code].
