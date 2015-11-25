@@ -5,6 +5,7 @@ Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-stu
 
 ## Getting Started
 1. Install [Node].
+
 2. Use NPM (comes with [Node]) to install [Typescript] from the command line.
 
   ```
@@ -12,10 +13,15 @@ Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-stu
   ```
 
 3. Install [VS Code].
+
 4. [Download] and extract this repository to desired destination.
+
 5. Open this folder using [VS Code].
+
 6. Press *Ctrl+Shift+B* to compile the typescript files in [src/](src/) to [bin/js/](bin/js/).
+
 7. Press *F5* to start the webserver.
+
 8. Open [localhost:5858] in your favorite web browser. To modify this port, make sure to update the port number in [.vscode/launch.json](.vscode/launch.json) and [server/server.js](server/server.js).
 
 ## Project Structure Overview
