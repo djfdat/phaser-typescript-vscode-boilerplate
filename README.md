@@ -36,7 +36,7 @@ Directory of all output files that can be directly uploaded to host your game fi
 Directory of all assets that the game/site/webpage will use. Feel free to make more directories for better organization.
 
 #### [/bin/js](/bin/js)
-Directory of compiled javascript as well as Phaser. Any additional javascript libraries can be placed here as well. Current Phaser version included is v2.4.4 "Amador".
+Directory of compiled javascript as well as Phaser. Any additional javascript libraries can be placed here as well. Current Phaser version included is v2.4.7 "Hinderstap".
 
 ### [/node_modules](/node_modules)
 Contains [Node] specific setup and packages. Currently the only package used is [node-static] to allow VS Code to run a server.
@@ -45,7 +45,7 @@ Contains [Node] specific setup and packages. Currently the only package used is 
 Contains server setup for the packaged [node-static] web server.
 
 ### [/src](/src)
-Contains all your source [Typescript] files. These will be compiled into /bin/js. Feel free to make more directories for better organization. This is where you will mainly be working.
+Contains all your source [Typescript] files. These compile into /bin/js. Feel free to make more directories for better organization. This is where you will mainly be working.
 
 ### [/tsd](/tsd)
 Contains [Typescript] definition files. This is what the typescript compiler uses to add types to objects/functions.
