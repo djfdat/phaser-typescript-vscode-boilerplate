@@ -24,7 +24,7 @@ var PhaserGame = (function () {
         logo.anchor.setTo(0.5, 0.5);
     };
     return PhaserGame;
-})();
+}());
 // when the page has finished loading, create our game
 window.onload = function () {
     var game = new PhaserGame();
