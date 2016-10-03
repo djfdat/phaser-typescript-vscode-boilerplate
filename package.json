@@ -1,0 +1,16 @@
+{
+  "name": "phaser-typescript-vscode-boilerplate",
+  "version": "1.0.0",
+  "description": "Project Boilerplate for using Phaser in VS Code.",
+  "main": "",
+  "repository": "",
+  "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "compile:ts": "tsc --out ./bin/js/game.js"
+  },
+  "author": "Fatir Ahmad",
+  "license": "MIT",
+  "dependencies": {
+    "node-static": "^0.7.9"
+  }
+}
