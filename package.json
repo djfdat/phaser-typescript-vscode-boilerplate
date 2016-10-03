@@ -5,8 +5,8 @@
   "main": "",
   "repository": "",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "compile:ts": "tsc --out ./bin/js/game.js"
+    "compile:ts": "tsc --outFile ./bin/js/game.js",
+    "inst": "npm install"
   },
   "author": "Fatir Ahmad",
   "license": "MIT",
