@@ -7,6 +7,7 @@
 			"name": "Launch Phaser Game",
 			// Type of configuration.
 			"type": "node",
+			"request": "launch",
 			// Workspace relative or absolute path to the program.
 			"program": "${workspaceRoot}/server/server.js",
 			// Automatically stop program after launch.
@@ -24,18 +25,19 @@
 				"NODE_ENV": "development"
 			},
 			// Use JavaScript source maps (if they exist).
-			"sourceMaps": false,
+			"sourceMaps": true,
 			// If JavaScript source maps are enabled, the generated code is expected in this directory.
 			"outDir": null
 		},
 		{
 			"name": "Attach",
 			"type": "node",
+			"request": "attach",
 			// TCP/IP address. Default is "localhost".
 			"address": "localhost",
 			// Port to attach to.
 			"port": 5858,
-			"sourceMaps": false
+			"sourceMaps": true
 		}
 	]
 }
