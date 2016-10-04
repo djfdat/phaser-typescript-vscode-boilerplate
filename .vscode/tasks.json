@@ -1,30 +1,36 @@
-// Available variables which can be used inside of strings.
-// ${workspaceRoot}: the root folder of the team
-// ${file}: the current opened file
-// ${fileBasename}: the current opened file's basename
-// ${fileDirname}: the current opened file's dirname
-// ${fileExtname}: the current opened file's extension
-// ${cwd}: the current working directory of the spawned process
-
-// A task runner that calls the Typescript compiler (tsc) and
-// Compiles a game.ts program
 {
-	"version": "0.1.0",
-
-	// The command is tsc. Assumes that tsc has been installed using npm install -g typescript
-	"command": "tsc",
-
-	// The command is a shell script
-	"isShellCommand": true,
-
-	// Show the output window only if unrecognized errors occur.
-	"showOutput": "silent",
-
-	// args is the HelloWorld program to compile.
-	//"args": ["HelloWorld.ts"],
-	"args": ["--out", "${workspaceRoot}/bin/js/game.js"],
-
-	// use the standard tsc problem matcher to find compile problems
-	// in the output.
-	"problemMatcher": "$tsc"
+  "name": "npmTask",
+  //...
+  "suppressTaskName": true,
+  "command": "npm",
+  "isShellCommand": true,
+  
+  "tasks": [
+    {
+      //Build Task
+      "taskName": "build",
+      //Run On Shift+Ctrl+B
+      "isBuildCommand": true,
+      //Don't run when Shift+Ctrl+T
+      "isTestCommand": false,
+      // Show the output window if error any
+      "showOutput": "silent",
+      //Npm Task Name
+      "args": [
+        "run", "compile:ts"
+      ]
+    },
+    {
+      //Test Task   
+      "taskName": "install",
+      // Don't run on Shift+Ctrl+B
+      "isBuildCommand": false,
+      // Run on Shift+Ctrl+T
+      "isTestCommand": true,
+      "showOutput": "always",
+      "args": [
+        "run", "inst"
+      ]
+    }
+  ]
 }
