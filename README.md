@@ -14,15 +14,17 @@ Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-stu
 
 3. Install [VS Code].
 
-4. [Download] and extract this repository to desired destination.
+4. [Download] and extract this repository to desired destination. Rename the folder as desired.
 
-5. Open this folder using [VS Code].
+5. Open this folder using [VS Code]. You can do this by right-clicking the folder and selecting 'Open with Code' from your desktop, or from *File > Open Folder* from within VS Code.
 
-6. Press *Ctrl+Shift+B* to compile the typescript files in [src/](src/) to [bin/js/](bin/js/).
+6. Press *Ctrl+Shift+P* to bring up the command palette and select 'Tasks: Run Test Task'. This will install required node modules.
 
-7. Press *F5* to start the webserver.
+7. Press *Ctrl+Shift+B* to compile the typescript files in [src/](src/) to [bin/js/](bin/js/).
 
-8. Open [localhost:5858] in your favorite web browser. To modify this port, make sure to update the port number in [.vscode/launch.json](.vscode/launch.json) and [server/server.js](server/server.js).
+8. Press *F5* to start the webserver.
+
+9. Open [localhost:5858] in your favorite web browser. To modify this port, make sure to update the port number in [.vscode/launch.json](.vscode/launch.json) and [server/server.js](server/server.js).
 
 ## Project Structure Overview
 
