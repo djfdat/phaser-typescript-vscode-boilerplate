@@ -38,7 +38,7 @@ Directory of all output files that can be directly uploaded to host your game fi
 Directory of all assets that the game/site/webpage will use. Feel free to make more directories for better organization.
 
 #### [/bin/js](/bin/js)
-Directory of compiled javascript as well as Phaser. Any additional javascript libraries can be placed here as well. Current Phaser version included is v2.4.7 "Hinderstap".
+Directory of compiled javascript as well as Phaser. Any additional javascript libraries can be placed here as well.
 
 ### [/node_modules](/node_modules)
 Contains [Node] specific setup and packages. Currently the only package used is [node-static] to allow VS Code to run a server.
