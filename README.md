@@ -59,6 +59,7 @@ npm update node-static
 ```
 ### Updating Phaser
 *Current Version 2.7.0*
+
 To update Phaser, run [/update_phaser.bat].
 
 ## Contributing
