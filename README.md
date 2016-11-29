@@ -1,9 +1,6 @@
 # Phaser Typescript VS Code Boilerplate
 Boilerplate project to get up and running with [Typescript] and [Phaser] in [VS Code].
 
-This is a fork of [this repository](https://github.com/djfdat/phaser-typescript-vscode-boilerplate). The only 
-difference is that I have added some basic states and wrapped everything up into modules.
-
 Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-studio-code/
 
 ## Getting Started
