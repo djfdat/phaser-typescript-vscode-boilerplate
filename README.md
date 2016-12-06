@@ -32,7 +32,7 @@ Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-stu
 Contains [VS Code] project setup to handle compiling typescript code and running the webserver. Only needed if you are using VS Code for these purposes.
 
 ### [/bin](/bin)
-Directory of all output files that can be directly uploaded to host your game files. 
+Directory of all output files that can be directly uploaded to host your game files.
 
 #### [/bin/assets](/bin/assets)
 Directory of all assets that the game/site/webpage will use. Feel free to make more directories for better organization.
@@ -58,9 +58,9 @@ This setup uses the node.js package [node-static] to handle the hosting of files
 npm update node-static
 ```
 ### Updating Phaser
-*Current Version 2.7.0*
+*Current Version 2.7.1*
 
-To update Phaser, run [/update_phaser.bat].
+To update Phaser, run [/update_phaser.sh].
 
 ## Contributing
 If something is out of date, please make an Issue or a Pull Request and I'll update it.
