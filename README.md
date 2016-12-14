@@ -58,7 +58,7 @@ This setup uses the node.js package [node-static] to handle the hosting of files
 npm update node-static
 ```
 ### Updating Phaser
-*Current Version 2.7.1*
+*Current Version 2.7.2 Community Edition (2016-12-14)*
 
 To update Phaser, run [/update_phaser.sh].
 
