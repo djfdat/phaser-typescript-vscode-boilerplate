@@ -1,5 +1,5 @@
 #!/bin/bash
-curl \
+curl -k \
 -o bin/js/phaser.js https://raw.githubusercontent.com/photonstorm/phaser-ce/master/build/phaser.js \
 -o bin/js/phaser.map https://raw.githubusercontent.com/photonstorm/phaser-ce/master/build/phaser.map \
 -o bin/js/phaser.min.js https://raw.githubusercontent.com/photonstorm/phaser-ce/master/build/phaser.min.js \
