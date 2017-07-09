@@ -1,18 +1,24 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var MyGame;
 (function (MyGame) {
     var PhaserGame = (function (_super) {
         __extends(PhaserGame, _super);
         function PhaserGame() {
-            _super.call(this, 800, 600, Phaser.AUTO, 'content', null);
-            this.state.add('Boot', MyGame.BootState);
-            this.state.add('Preloader', MyGame.PreloaderState);
-            this.state.add('Game', MyGame.GameState);
-            this.state.start('Boot');
+            var _this = _super.call(this, 800, 600, Phaser.AUTO, 'content', null) || this;
+            _this.state.add('Boot', MyGame.BootState);
+            _this.state.add('Preloader', MyGame.PreloaderState);
+            _this.state.add('Game', MyGame.GameState);
+            _this.state.start('Boot');
+            return _this;
         }
         return PhaserGame;
     }(Phaser.Game));
@@ -27,13 +33,14 @@ var MyGame;
     var BootState = (function (_super) {
         __extends(BootState, _super);
         function BootState() {
-            _super.apply(this, arguments);
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         BootState.prototype.preload = function () { };
         BootState.prototype.create = function () {
             // Use this if you don't need multitouch
             this.input.maxPointers = 1;
             if (this.game.device.desktop) {
+                // Desktop specific settings go here
             }
             this.game.state.start('Preloader', true, false);
         };
@@ -46,7 +53,7 @@ var MyGame;
     var GameState = (function (_super) {
         __extends(GameState, _super);
         function GameState() {
-            _super.apply(this, arguments);
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         GameState.prototype.preload = function () { };
         GameState.prototype.create = function () {
@@ -62,7 +69,7 @@ var MyGame;
     var PreloaderState = (function (_super) {
         __extends(PreloaderState, _super);
         function PreloaderState() {
-            _super.apply(this, arguments);
+            return _super !== null && _super.apply(this, arguments) || this;
         }
         PreloaderState.prototype.preload = function () {
             this.game.load.image('logo', 'assets/logo.png');

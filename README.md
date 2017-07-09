@@ -58,17 +58,17 @@ This setup uses the node.js package [node-static] to handle the hosting of files
 npm update node-static
 ```
 ### Updating Phaser
-*Current Version 2.7.2 Community Edition (2016-12-14)*
+*Current Version 2.8.1 Community Edition (2017-07-09)*
 
 To update Phaser, run [/update_phaser.sh](/update_phaser.sh).
 
 ## Contributing
 If something is out of date, please make an Issue or a Pull Request and I'll update it.
 
-[Phaser]:			http://phaser.io/
-[Node]: 			https://nodejs.org
-[Typescript]:		https://www.npmjs.com/package/typescript
-[VS Code]: 			https://code.visualstudio.com
-[Download]: 		https://code.visualstudio.com/
-[localhost:5858]:	localhost:5858
-[node-static]:		https://github.com/cloudhead/node-static
+[Phaser]:         http://phaser.io/
+[Node]:           https://nodejs.org
+[Typescript]:     https://www.npmjs.com/package/typescript
+[VS Code]:        https://code.visualstudio.com
+[Download]:       https://code.visualstudio.com/
+[localhost:5858]: localhost:5858
+[node-static]:    https://github.com/cloudhead/node-static

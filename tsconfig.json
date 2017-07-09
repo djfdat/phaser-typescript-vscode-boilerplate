@@ -6,7 +6,7 @@
 	"exclude": [
 		"node_modules",
 		"bin",
-		"tsd/phaser.comments.d.ts",
-		"tsd/pixi.comments.d.ts"
+		"tsd/phaser.d.ts",
+		"tsd/pixi.d.ts"
 	]
 }
