@@ -808,6 +808,12 @@ declare module PIXI {
         */
         updateTransform(parent?: DisplayObjectContainer): void;
 
+        /**
+        * If this DisplayObject has a cached Sprite, this method generates and updates it.
+        * @return - A reference to this DisplayObject.
+        */
+        updateCache(): void;
+
     }
 
 
