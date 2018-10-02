@@ -3,6 +3,8 @@ Boilerplate project to get up and running with [Typescript] and [Phaser] in [VS 
 
 Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-studio-code/
 
+*NOTE: This is now running on Phaser Community Edition (Phaser-CE). This is Phaser 2, not Phaser 3 or beyond.*
+
 ## Getting Started
 1. Install [Node].
 
@@ -58,7 +60,7 @@ This setup uses the node.js package [node-static] to handle the hosting of files
 npm update node-static
 ```
 ### Updating Phaser
-*Current Version v2.11.0*
+*Current Version Phaser-CE v2.11.0*
 
 To update Phaser, run [/update_phaser.sh](/update_phaser.sh).
 
