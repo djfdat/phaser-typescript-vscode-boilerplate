@@ -88,6 +88,8 @@ declare class Phaser {
     static BOTTOM_CENTER: number;
     static BOTTOM_RIGHT: number;
 
+    static EmptyRectangle: Phaser.Rectangle;
+
 }
 
 declare module Phaser {
@@ -1117,6 +1119,8 @@ declare module Phaser {
         constructor(x?: number, y?: number, width?: number, height?: number);
 
         bottom: number;
+        centerX: number;
+        centerY: number;
         empty: boolean;
         height: number;
         left: number;
@@ -1480,9 +1484,15 @@ declare module Phaser {
         fullScreenScaleMode?: number;
         fullScreenTarget?: HTMLElement;
         height?: number | string;
+        keyboard?: boolean;
+        maxPointers?: number;
+        mouse?: boolean;
+        mouseWheel?: boolean;
+        mspointer?: boolean;
         multiTexture?: boolean;
         parent?: HTMLElement | string;
         physicsConfig?: any;
+        pointerLock?: boolean;
         preserveDrawingBuffer?: boolean;
         renderer?: number;
         resolution?: number;
@@ -1492,10 +1502,23 @@ declare module Phaser {
         scaleV?: number
         seed?: number;
         state?: any;
+        touch?: boolean;
         transparent?: boolean;
         trimH?: number;
         trimV?: number;
         width?: number | string;
+
+    }
+
+    interface InputConfig {
+
+        keyboard?: boolean;
+        maxPointers?: number;
+        mouse?: boolean;
+        mouseWheel?: boolean;
+        mspointer?: boolean;
+        pointerLock?: boolean;
+        touch?: boolean;
 
     }
 
@@ -1621,7 +1644,7 @@ declare module Phaser {
         audio(key: string, volume?: number, loop?: boolean, connect?: boolean): Phaser.Sound;
         audioSprite(key: string): Phaser.AudioSprite;
         bitmapData(width?: number, height?: number, key?: string, addToCache?: boolean): Phaser.BitmapData;
-        bitmapText(x: number, y: number, font: string, text?: string, size?: number, align?: string): Phaser.BitmapText;
+        bitmapText(x: number, y: number, font: string, text?: string, size?: number, group?: Phaser.Group | Phaser.Stage): Phaser.BitmapText;
         button(x?: number, y?: number, key?: string, callback?: Function, callbackContext?: any, overFrame?: any, outFrame?: any, downFrame?: any, upFrame?: any, group?: Phaser.Group | Phaser.Stage): Phaser.Button;
         emitter(x?: number, y?: number, maxParticles?: number): Phaser.Particles.Arcade.Emitter;
         existing(object: any): any;
@@ -1815,7 +1838,7 @@ declare module Phaser {
         destroy(destroyChildren?: boolean): void;
         destroyCachedSprite(): void;
         drawCircle(x: number, y: number, diameter: number): Phaser.Graphics;
-        drawEllipse(x: number, y: number, width: number, height: number): Phaser.Graphics;
+        drawEllipse(centerX: number, centerY: number, halfWidth: number, halfHeight: number): Phaser.Graphics;
         drawPolygon(...path: any[]): Phaser.Graphics;
         drawRect(x: number, y: number, width: number, height: number): Phaser.Graphics;
         drawRoundedRect(x: number, y: number, width: number, height: number, radius: number): Phaser.Graphics;
@@ -2149,7 +2172,7 @@ declare module Phaser {
 
         addPointer(): Phaser.Pointer;
         addMoveCallback(callback: Function, context: any): number;
-        boot(): void;
+        boot(config: InputConfig): void;
         countActivePointers(limit?: number): number;
         deleteMoveCallback(callback: Function, context?: any): void;
         destroy(): void;
@@ -2236,7 +2259,7 @@ declare module Phaser {
         pointerY(pointerId?: number): number;
         reset(): void;
         setDragLock(allowHorizontal?: boolean, allowVertical?: boolean): void;
-        start(priority: number, useHandCursor: boolean): Phaser.Sprite;
+        start(priority?: number, useHandCursor?: boolean): Phaser.Sprite;
         startDrag(pointer: Phaser.Pointer): void;
         stop(): void;
         stopDrag(pointer: Phaser.Pointer): void;
@@ -2388,6 +2411,7 @@ declare module Phaser {
         static PLUS: number;
         static MINUS: number;
 
+        active: boolean;
         callbackContext: any;
         enabled: boolean;
         event: any;
@@ -2818,6 +2842,7 @@ declare module Phaser {
         button: number;
         callbackContext: any;
         capture: boolean;
+        active: boolean;
         enabled: boolean;
         event: MouseEvent;
         game: Phaser.Game;
@@ -2849,7 +2874,26 @@ declare module Phaser {
         pointerLockChange(event: MouseEvent): void;
         releasePointerLock(): void;
         requestPointerLock(): void;
-        start(): void;
+        start(): boolean;
+        stop(): void;
+
+    }
+
+    class MouseWheel {
+
+        static UP: number;
+        static DOWN: number;
+
+        game: Phaser.Game;
+        input: Phaser.Input;
+        element: HTMLElement;
+        preventDefault: boolean
+        active: boolean;
+        callback: (event: WheelEvent) => void;
+        callbackContext: any;
+        delta: number;
+
+        start(): boolean;
         stop(): void;
 
     }
@@ -2860,6 +2904,8 @@ declare module Phaser {
 
         button: number;
         capture: boolean;
+        active: boolean;
+        enabled: boolean;
         callbackContext: any;
         event: MSPointerEvent;
         game: Phaser.Game;
@@ -2875,7 +2921,7 @@ declare module Phaser {
         pointerMoveCallback: (event: MSPointerEvent) => void;
         pointerUpCallback: (event: MSPointerEvent) => void;
 
-        start(): void;
+        start(): boolean;
         stop(): void;
 
     }
@@ -2937,6 +2983,7 @@ declare module Phaser {
 
                 constructor(game: Phaser.Game, x?: number, y?: number, maxParticles?: number);
 
+                area: Phaser.Rectangle;
                 alphaData: any[];
                 autoAlpha: boolean;
                 autoScale: boolean;
@@ -3055,7 +3102,7 @@ declare module Phaser {
         progress: number;
         mute: boolean;
         paused: boolean;
-        volume: boolean;
+        volume: number;
         playbackRate: boolean;
         playing: boolean;
         playWhenUnlocked: boolean;
@@ -4237,6 +4284,23 @@ declare module Phaser {
 
     }
 
+    class PointerLock {
+
+        game: Phaser.Game;
+        input: Phaser.Input;
+        element: HTMLElement;
+        active: boolean;
+        locked: boolean;
+        onChange: Phaser.Signal;
+        onError: Phaser.Signal;
+
+        exit(): void;
+        request(): void;
+        start(): boolean;
+        stop(): void;
+
+    }
+
     class Polygon {
 
         constructor(points: Phaser.Point[] | number[]);
@@ -4393,6 +4457,7 @@ declare module Phaser {
         key: string;
         type: number;
 
+        clear(): void;
         render(displayObject: PIXI.DisplayObject, matrix?: Phaser.Matrix, clear?: boolean): void;
         renderXY(displayObject: PIXI.DisplayObject, x: number, y: number, clear?: boolean): void;
         renderRawXY(displayObject: PIXI.DisplayObject, x: number, y: number, clear?: boolean): void;
@@ -5155,6 +5220,7 @@ declare module Phaser {
         scale: Phaser.Point;
         tab: number;
         tabs: number | number[];
+        testString: string;
         text: string;
         textBounds: Phaser.Rectangle;
         type: number;
@@ -5623,6 +5689,7 @@ declare module Phaser {
         constructor(game: Phaser.Game);
 
         callbackContext: any;
+        active: boolean;
         enabled: boolean;
         event: any;
         game: Phaser.Game;
@@ -5644,7 +5711,7 @@ declare module Phaser {
         onTouchLeave(event: any): void;
         onTouchMove(event: any): void;
         onTouchStart(event: any): void;
-        start(): void;
+        start(): boolean;
         stop(): void;
 
     }
@@ -5781,6 +5848,12 @@ declare module Phaser {
 
         class Debug {
 
+            static GEOM_AUTO: number;
+            static GEOM_RECTANGLE: number;
+            static GEOM_CIRCLE: number;
+            static GEOM_POINT: number;
+            static GEOM_ELLIPSE: number;
+
             constructor(game: Phaser.Game);
 
             bmd: Phaser.BitmapData;
@@ -5806,9 +5879,10 @@ declare module Phaser {
             box2dWorld(): void;
             camera(camera: Phaser.Camera, color?: string, filled?: boolean): void;
             cameraInfo(camera: Phaser.Camera, x: number, y: number, color?: string): void;
+            device(x: number, y: number, color?: string): void;
             destroy(): void;
             geom(object: any, color?: string, fiiled?: boolean, forceType?: number): void;
-            inputInfo(x: number, y: number, color?: string): void;
+            inputInfo(x: number, y: number, color?: string, showDetails?: boolean): void;
             lineInfo(line: Phaser.Line, x: number, y: number, color?: string): void;
             key(key: Phaser.Key, x?: number, y?: number, color?: string): void;
             line(...args: string[]): void;
@@ -5817,7 +5891,7 @@ declare module Phaser {
             preUpdate(): void;
             physicsGroup(group: Phaser.Group, color?: string, filled?: boolean, checkExists?: boolean): void;
             pixel(x: number, y: number, color?: string, size?: number): void;
-            pointer(pointer: Phaser.Pointer, hideIfUp?: boolean, downColor?: string, upColor?: string, color?: string): void;
+            pointer(pointer: Phaser.Pointer, hideIfUp?: boolean, downColor?: string, upColor?: string, color?: string, inactiveColor?: string): void;
             quadTree(quadtree: Phaser.QuadTree, color?: string): void;
             rectangle(object: Phaser.Rectangle, color?: string, filled?: boolean): void;
             renderer(x?: number, y?: number, color?: string): void;
