@@ -65,7 +65,7 @@ To update Phaser, run [/update_phaser.sh](/update_phaser.sh).
 ## Contributing
 If something is out of date, please make an Issue or a Pull Request and I'll update it.
 
-[Phaser]:         http://phaser.io/
+[Phaser]:         https://github.com/photonstorm/phaser-ce/
 [Node]:           https://nodejs.org
 [Typescript]:     https://www.npmjs.com/package/typescript
 [VS Code]:        https://code.visualstudio.com
