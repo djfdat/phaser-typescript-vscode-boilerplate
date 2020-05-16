@@ -28,7 +28,7 @@ Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-stu
 
 9. Open [localhost:5858] in your favorite web browser. To modify this port update the port number in [.vscode/launch.json](.vscode/launch.json) and [server/server.js](server/server.js).
 
-*Note:* Steps 1-3 only need to be done once per machine. 
+*NOTE: Steps 1-3 only need to be done once per machine.*
 
 ## Project Structure Overview
 
