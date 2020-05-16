@@ -11,6 +11,6 @@
   "author": "Fatir Ahmad",
   "license": "MIT",
   "dependencies": {
-    "node-static": "^0.7.9"
+    "node-static": "^0.7.11"
   }
 }
