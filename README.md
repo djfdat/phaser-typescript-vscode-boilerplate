@@ -3,7 +3,7 @@ Boilerplate project to get up and running with [Typescript] and [Phaser] in [VS 
 
 Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-studio-code/
 
-*NOTE: This is now running on Phaser Community Edition (Phaser-CE). This is Phaser 2, not Phaser 3 or beyond.*
+*NOTE: This boilerplate is setup to use Phaser Community Edition (Phaser-CE). This is Phaser 2, not Phaser 3 or beyond.*
 
 ## Getting Started
 1. Install [Node].
@@ -26,12 +26,14 @@ Derived from: http://divillysausages.com/2015/06/09/using-phaser-with-visual-stu
 
 8. Press *F5* to start the webserver.
 
-9. Open [localhost:5858] in your favorite web browser. To modify this port, make sure to update the port number in [.vscode/launch.json](.vscode/launch.json) and [server/server.js](server/server.js).
+9. Open [localhost:5858] in your favorite web browser. To modify this port update the port number in [.vscode/launch.json](.vscode/launch.json) and [server/server.js](server/server.js).
+
+*Note:* Steps 1-3 only need to be done once per machine. 
 
 ## Project Structure Overview
 
 ### [/.vscode](/.vscode)
-Contains [VS Code] project setup to handle compiling typescript code and running the webserver. Only needed if you are using VS Code for these purposes.
+Contains [VS Code] project setup to handle compiling typescript code and running the webserver. Only needed if you are using VS Code for these purposes. If you're just using the project structure, this folder can be deleted.
 
 ### [/bin](/bin)
 Directory of all output files that can be directly uploaded to host your game files.
@@ -60,9 +62,9 @@ This setup uses the node.js package [node-static] to handle the hosting of files
 npm update node-static
 ```
 ### Updating Phaser
-*Current Version Phaser-CE v2.11.0*
+*Current Version Phaser-CE v2.15.0*
 
-To update Phaser, run [/update_phaser.sh](/update_phaser.sh).
+To update Phaser, run [/update_phaser.sh](/update_phaser.sh) or [/pdate_phaser.bat](/update_phaser.bat) on Windows machines.
 
 ## Contributing
 If something is out of date, please make an Issue or a Pull Request and I'll update it.
