@@ -4,6 +4,8 @@
 // Type definitions for Phaser CE
 // Project: https://github.com/photonstorm/phaser-ce
 
+interface MediaTrackConstraints { }
+
 declare module "phaser-ce" {
     export = Phaser;
 }
@@ -1542,6 +1544,7 @@ declare module Phaser {
         debug: Phaser.Utils.Debug;
         device: Phaser.Device;
         dropFrames: boolean;
+        forceSingleRender: boolean;
         forceSingleUpdate: boolean;
         fpsProblemNotifier: Phaser.Signal;
         height: number;
@@ -1553,8 +1556,8 @@ declare module Phaser {
         lockRender: boolean;
         make: Phaser.GameObjectCreator;
         math: Phaser.Math;
-        net: Phaser.Net;
         onBlur: Phaser.Signal;
+        onBoot: Phaser.Signal;
         onFocus: Phaser.Signal;
         onPause: Phaser.Signal;
         onResume: Phaser.Signal;
@@ -2910,36 +2913,22 @@ declare module Phaser {
         active: boolean;
         enabled: boolean;
         callbackContext: any;
-        event: MSPointerEvent;
+        event: PointerEvent;
         game: Phaser.Game;
         input: Phaser.Input;
 
-        onPointerDown: (event: MSPointerEvent) => void;
-        onPointerMove: (event: MSPointerEvent) => void;
-        onPointerUp: (event: MSPointerEvent) => void;
-        mouseDownCallback: (event: MSPointerEvent) => void;
-        mouseMoveCallback: (event: MSPointerEvent) => void;
-        mouseUpCallback: (event: MSPointerEvent) => void;
-        pointerDownCallback: (event: MSPointerEvent) => void;
-        pointerMoveCallback: (event: MSPointerEvent) => void;
-        pointerUpCallback: (event: MSPointerEvent) => void;
+        onPointerDown: (event: PointerEvent) => void;
+        onPointerMove: (event: PointerEvent) => void;
+        onPointerUp: (event: PointerEvent) => void;
+        mouseDownCallback: (event: PointerEvent) => void;
+        mouseMoveCallback: (event: PointerEvent) => void;
+        mouseUpCallback: (event: PointerEvent) => void;
+        pointerDownCallback: (event: PointerEvent) => void;
+        pointerMoveCallback: (event: PointerEvent) => void;
+        pointerUpCallback: (event: PointerEvent) => void;
 
         start(): boolean;
         stop(): void;
-
-    }
-
-    class Net {
-
-        constructor(game: Phaser.Game);
-
-        game: Phaser.Game;
-
-        checkDomainName(domain: string): boolean;
-        decodeURI(value: string): string;
-        getHostName(): string;
-        getQueryString(parameter?: string): string;
-        updateQueryString(key: string, value: any, redirect?: boolean, url?: string): string;
 
     }
 
@@ -3045,9 +3034,11 @@ declare module Phaser {
                 reset(x: number, y: number, health?: number): Phaser.Particles;
                 setAlpha(min?: number, max?: number, rate?: number, ease?: (k: number) => number, yoyo?: boolean): Phaser.Particles.Arcade.Emitter;
                 setAngle(minAngle: number, maxAngle: number, minSpeed?: number, maxSpeed?: number): Phaser.Particles.Arcade.Emitter;
+                setGravity(x?: number, y?: number): Phaser.Particles.Arcade.Emitter;
                 setRotation(min?: number, max?: number): Phaser.Particles.Arcade.Emitter;
                 setScale(minX?: number, maxX?: number, minY?: number, maxY?: number, rate?: number, ease?: (k: number) => number, yoyo?: boolean): Phaser.Particles.Arcade.Emitter;
                 setSize(width: number, height: number): Phaser.Particles.Arcade.Emitter;
+                setSpeed(minX: number, maxX: number, minY: number, maxY: number): Phaser.Particles.Arcade.Emitter;
                 setXSpeed(min: number, max: number): Phaser.Particles.Arcade.Emitter;
                 setYSpeed(min: number, max: number): Phaser.Particles.Arcade.Emitter;
                 start(explode?: boolean, lifespan?: number, frequency?: number, total?: number, forceQuantity?: boolean): Phaser.Particles.Arcade.Emitter;
@@ -3136,10 +3127,10 @@ declare module Phaser {
         add(object: Phaser.Sprite | Phaser.Sprite[] | Phaser.Image | Phaser.Image[]): Phaser.Video;
         addToWorld(x?: number, y?: number, anchorX?: number, anchorY?: Number, scaleX?: number, scaleY?: number): Phaser.Image;
         createVideoFromBlob(blob: Blob): Phaser.Video;
-        startMediaStream(captureAudio?: boolean, width?: number, height?: number): Phaser.Video;
-        createVideoFromURL(url: string, autoplay?: boolean): Phaser.Video;
+        startMediaStream(captureAudio?: boolean | MediaTrackConstraints, width?: number, height?: number, captureVideo?: MediaTrackConstraints): Phaser.Video;
+        createVideoFromURL(url: string, autoplay?: boolean, crossOrigin?: string): Phaser.Video;
         changeSource(src: string, autoplay?: boolean): Phaser.Video;
-        connectToMediaStram(video: any, stream: any): Phaser.Video;
+        connectToMediaStream(video: any, stream: any): Phaser.Video;
         destroy(): void;
         play(loop?: boolean, playbackRate?: number): Phaser.Video;
         playHandler(): void;
@@ -3698,7 +3689,7 @@ declare module Phaser {
                 destroy(): void;
                 getCollisionMask(): number;
                 getVelocityAtPoint(result: number[], relativePoint: number[]): number[];
-                loadPolygon(key: string, object: string, scale ?: number): boolean;
+                loadPolygon(key: string, object: string, scale?: number): boolean;
                 moveBackward(speed: number): void;
                 moveDown(speed: number): void;
                 moveForward(speed: number): void;
@@ -4108,7 +4099,7 @@ declare module Phaser {
     }
 
     interface PluginConstructorOf<T> {
-        new (...parameters: any[]): T;
+        new(...parameters: any[]): T;
     }
 
     class PluginManager implements IStateCycle {
@@ -5078,7 +5069,7 @@ declare module Phaser {
         paused(game: Phaser.Game): void;
         pauseUpdate(game: Phaser.Game): void;
         preload(game: Phaser.Game): void;
-        preRender(game: Phaser.Game, elapsedTime: number): void;
+        preRender(game: Phaser.Game): void;
         render(game: Phaser.Game): void;
         resize(width: number, height: number): void;
         resumed(game: Phaser.Game): void;
@@ -5126,7 +5117,7 @@ declare module Phaser {
         getCurrentState(): Phaser.State;
         link(key: string): void;
         loadComplete(): void;
-        preRender(elapsedTime: number): void;
+        preRender(): void;
         preUpdate(): void;
         render(): void;
         remove(key: string): void;
@@ -5164,6 +5155,12 @@ declare module Phaser {
         backgroundColor?: string;
         boundsAlignH?: string;
         boundsAlignV?: string;
+        fontProperties?: {
+            ascent: number;
+            descent: number;
+            fontSize: number;
+        };
+        testString?: string;
 
     }
 
@@ -5336,7 +5333,8 @@ declare module Phaser {
         key: string;
         layer: Phaser.TilemapLayer[];
         layers: any[];
-        objects: any[];
+        objects: { [index: string]: Phaser.TilemapObject[] };
+        objectsMap: { [index: number]: Phaser.TilemapObject };
         orientation: string;
         properties: any;
         rayStepRate: number;
@@ -5353,7 +5351,7 @@ declare module Phaser {
         copy(x: number, y: number, width: number, height: number, layer?: any): Phaser.Tile[];
         create(name: string, width: number, height: number, tileWidth: number, tileHeight: number, group?: Phaser.Group): Phaser.TilemapLayer;
         createBlankLayer(name: string, width: number, height: number, tileWidth: number, tileHeight: number, group?: Phaser.Group): Phaser.TilemapLayer;
-        createFromObjects(name: string, gid: number, key: string, frame?: any, exists?: boolean, autoCull?: boolean, group?: Phaser.Group, CustomClass?: any, adjustY?: boolean, adjustSize?: boolean): void;
+        createFromObjects(name: string, search: number | string | number[], key: string, frame?: any, exists?: boolean, autoCull?: boolean, group?: Phaser.Group, CustomClass?: any, adjustY?: boolean, adjustSize?: boolean): Phaser.Sprite[];
         createFromTiles(tiles: any, replacements: any, key: string, layer?: any, group?: Phaser.Group, properties?: any): number;
         createLayer(layer: any, width?: number, height?: number, group?: Phaser.Group): Phaser.TilemapLayer;
         destroy(): void;
@@ -5364,7 +5362,9 @@ declare module Phaser {
         getIndex(location: any[], name: string): number;
         getLayer(layer: any): number;
         getLayerIndex(name: string): number;
+        getObject(id: number): Phaser.TilemapObject;
         getObjectIndex(name: string): number;
+        getObjects(layer: string, propName: string, propValue: any, output?: Phaser.TilemapObject[]): Phaser.TilemapObject[];
         getTile(x: number, y: number, layer?: any, nonNull?: boolean): Phaser.Tile;
         getTileAbove(layer: number, x: number, y: number): Phaser.Tile;
         getTileBelow(layer: number, x: number, y: number): Phaser.Tile;
@@ -5484,6 +5484,27 @@ declare module Phaser {
 
     }
 
+    interface TilemapObject {
+        ellipse: boolean;
+        gid: number;
+        height: number;
+        id: number;
+        name: string;
+        point: boolean;
+        polygon: number[][];
+        polyline: number[][];
+        properties: any;
+        rectangle: boolean;
+        rotation: number;
+        template: string;
+        text: any;
+        type: string;
+        visible: boolean;
+        width: number;
+        x: number;
+        y: number;
+    }
+
     class TilemapParser {
 
         static INSERT_NULL: boolean;
@@ -5590,8 +5611,12 @@ declare module Phaser {
         constructor(game: Phaser.Game);
 
         advancedTiming: boolean;
+        delta: number;
+        deltaMax: number;
+        deltaTotal: number;
         desiredFps: number;
         desiredFpsMult: number;
+        desiredMinFps: number;
         elapsed: number;
         events: Phaser.Timer;
         elapsedMS: number;
@@ -5606,9 +5631,6 @@ declare module Phaser {
         now: number;
         pausedTime: number;
         pauseDuration: number;
-        physicsElapsed: number;
-        physicsElapsedMS: number;
-        prevTime: number;
         renders: number;
         rps: number;
         slowMotion: number;
@@ -5727,7 +5749,6 @@ declare module Phaser {
 
         chainedTween: Phaser.Tween;
         current: number;
-        frameBased: boolean;
         game: Phaser.Game;
         isRunning: boolean;
         isPaused: boolean;
@@ -5814,7 +5835,6 @@ declare module Phaser {
 
         constructor(game: Phaser.Game);
 
-        frameBased: boolean;
         game: Phaser.Game;
 
         add(tween: Phaser.Tween): Phaser.Tween;
@@ -5939,7 +5959,7 @@ declare module Phaser {
         bulletFrame: string;
         bulletFrameCycle: boolean;
         bulletFrameRandom: boolean;
-        bulletFrames:  any[];
+        bulletFrames: any[];
         bulletGravity: Phaser.Point;
         bulletInheritSpriteSpeed: boolean;
         bulletKey: string;
